@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>使用hexo搭建博客</title>
+    <url>/2021/03/15/hexo/</url>
+    <content><![CDATA[<h3 id="学习如何使用-Hexo-搭建属于自己的博客-https-hexo-io-zh-cn"><a href="#学习如何使用-Hexo-搭建属于自己的博客-https-hexo-io-zh-cn" class="headerlink" title="学习如何使用 Hexo 搭建属于自己的博客(https://hexo.io/zh-cn/)!"></a>学习如何使用 Hexo 搭建属于自己的博客(<a href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a>)!</h3><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="什么是-Hexo"><a href="#什么是-Hexo" class="headerlink" title="什么是 Hexo?"></a>什么是 Hexo?</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>需要在本机安装 Git,node 基本环境</p>
+<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>使用命令初始化 hexo</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init name</span><br></pre></td></tr></table></figure>
+
+<p>安装依赖包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+<p>新建完成后，指定文件夹目录下有：</p>
+<ol>
+<li>node_modules: 依赖包</li>
+<li>public：存放生成的页面</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：主题</li>
+<li>** _config.yml: 博客的配置文件**</li>
+</ol>
+<h3 id="本地查看页面"><a href="#本地查看页面" class="headerlink" title="本地查看页面"></a>本地查看页面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>打开 hexo 的服务，在浏览器输入 localhost:4000 就可以看到你生成的博客了。</p>
+]]></content>
+  </entry>
+</search>
