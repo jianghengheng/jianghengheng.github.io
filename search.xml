@@ -25,7 +25,7 @@
 </ol>
 <h3 id="本地查看页面"><a href="#本地查看页面" class="headerlink" title="本地查看页面"></a>本地查看页面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
-<p>打开 hexo 的服务，在浏览器输入 localhost:4000 就可以看到你生成的博客了。</p>
+<p>打开 hexo 的服务，在浏览器输入 localhost:4000 就可以看到你生成的博客了。<br>是不是很惊喜!!!</p>
 ]]></content>
   </entry>
 </search>
