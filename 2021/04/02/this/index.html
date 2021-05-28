@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> 蒋衡</title>
+      <title>总结this指向 |  蒋衡</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -41,162 +41,8 @@
     
       
     <main class="content on">
-      
-<section class="cover">
-    
-      
-      <!-- <a class="forkMe" href="https://github.com/Shen-Yu/hexo-theme-ayer"
-        target="_blank"><img width="149" height="149" src="/images/forkme.png"
-          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a> -->
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">蒋衡</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
-
-
-<!-- Subtitle -->
-
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
-        startDelay: 0,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: true
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
-  
-<div id="main">
-  <section class="outer">
-  
-  
-  
-
-<div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
-    <div class="notice-content" id="broad"></div>
-</div>
-<script type="text/javascript">
-    fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("broad").innerHTML = data.hitokoto;
-        })
-        .catch(console.error)
-</script>
-
-<style>
-    .notice {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-    }
-
-    .notice i {
-        float: left;
-        color: #999;
-        font-size: 16px;
-        padding-right: 10px;
-        vertical-align: middle;
-        margin-top: -2px;
-    }
-
-    .notice-content {
-        display: initial;
-        vertical-align: middle;
-    }
-</style>
-  
-  <article class="articles">
-    
-    
-    
-    
-    <article
-  id="post-VueReact"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/05/03/VueReact/"
-    >React 和 Vue的区别</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/05/03/VueReact/" class="article-date">
-  <time datetime="2021-05-02T16:00:00.000Z" itemprop="datePublished">2021-05-03</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="总结-React-和-Vue-的区别"><a href="#总结-React-和-Vue-的区别" class="headerlink" title="总结 React 和 Vue 的区别"></a>总结 React 和 Vue 的区别</h3><p>从各个方面的不同点，原理，为什么这样实现来描述的话怎么也说不完 每个人的理解不同</p>
-<h3 id="1-设计思想"><a href="#1-设计思想" class="headerlink" title="1.设计思想"></a>1.设计思想</h3><p>vue 的官网中说它是一款渐进式框架，采用自底向上增量开发的设计。<br>react 主张函数式编程，所以推崇纯组件，数据不可变，单向数据流，当然需要双向的地方也可以手动实现，<br>比如借助 onChange 和 setState 来实现一个双向的数据流。</p>
-<p>react 一个库 vue 是一个框架 vue 中帮你实现了许多指令等函数 ,react 是开放式的需要什么自己动手写就行</p>
-<h3 id="2-编写语法"><a href="#2-编写语法" class="headerlink" title="2.编写语法"></a>2.编写语法</h3><p>Vue 推荐的做法是 webpack+vue-loader 的单文件组件格式，vue 保留了 html、css、js 分离的写法<br>React的开发者可能知道，react是没有模板的，直接就是一个渲染函数，它中间返回的就是一个虚拟DOM树，<br>React推荐的做法是  JSX + inline style, 也就是把HTML和CSS全都写进JavaScript了,即’all in  js’。</p>
-<h3 id="3-构建工具"><a href="#3-构建工具" class="headerlink" title="3.构建工具"></a>3.构建工具</h3><p>vue 提供了 CLI 脚手架，可以帮助你非常容易地构建项目。<br>React 在这方面也提供了 create-react-app，但是现在还存在一些局限性，不能配置等等</p>
-<h3 id="4-数据绑定"><a href="#4-数据绑定" class="headerlink" title="4.数据绑定"></a>4.数据绑定</h3><p>vue 是实现了双向数据绑定的 mvvm 框架，当视图改变更新模型层，当模型层改变更新视图层。<br>在 vue 中，使用了双向绑定技术，就是 View 的变化能实时让 Model 发生变化，而 Model 的变化也能实时更新到 View。<br>(这里我们可以继续深入讲解一下双向数据绑定的原理，我之前的文章手写 Vue 源码可参考)<br>react是单向数据流，react中属性是不允许更改的，状态是允许更改的。<br>react中组件不允许通过this.state这种方式直接更改组件的状态。自身设置的状态，可以通过setState来进行更改。<br>(注意：React中setState是异步的，导致获取dom可能拿的还是之前的内容，<br>所以我们需要在setState第二个参数（回调函数）中获取更新后的新的内容。)<br>【这里如果你了解深入的话可以尝试描述一下React中setState的异步操作是怎么实现的，Vue中的更新是通过微任务等】</p>
-<h3 id="5-diff-算法"><a href="#5-diff-算法" class="headerlink" title="5.diff 算法"></a>5.diff 算法</h3><p>vue 中 diff 算法实现流程： 1.在内存中构建虚拟 dom 树 2.将内存中虚拟 dom 树渲染成真实 dom 结构 3.数据改变的时候，将之前的虚拟 dom 树结合新的数据生成新的虚拟 dom 树 4.将此次生成好的虚拟 dom 树和上一次的虚拟 dom 树进行一次比对(diff 算法进行比对)，来更新只需要被替换的 DOM，<br>而不是全部重绘。在 Diff 算法中，只平层的比较前后两棵 DOM 树的节点，没有进行深度的遍历。 5.会将对比出来的差异进行重新渲染<br>react中diff算法实现流程:<br>DOM结构发生改变—–直接卸载并重新create<br>DOM结构一样—–不会卸载,但是会update变化的内容<br>所有同一层级的子节点.他们都可以通过key来区分—–同时遵循1.2两点<br>(其实这个key的存在与否只会影响diff算法的复杂度,换言之,你不加key的情况下,<br>diff算法就会以暴力的方式去根据一二的策略更新,但是你加了key,diff算法会引入一些另外的操作)</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
+      <section class="outer">
+  <article
   id="post-this"
   class="article article-type-post"
   itemscope
@@ -207,10 +53,9 @@
     
     <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/04/02/this/"
-    >总结this指向</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  总结this指向
+</h1>
  
 
       
@@ -219,9 +64,34 @@
     <div class="article-meta">
       <a href="/2021/04/02/this/" class="article-date">
   <time datetime="2021-04-01T16:00:00.000Z" itemprop="datePublished">2021-04-02</time>
-</a>    
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">444</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2 分钟</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
       
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
   <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="总结-this-指向"><a href="#总结-this-指向" class="headerlink" title="总结 this 指向"></a>总结 this 指向</h3><p>其实大部分情况下可以用一句话来概括，this 总是指向调用该函数的对象。</p>
@@ -249,171 +119,96 @@
 
     <!-- copyright -->
     
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-interview"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/03/20/interview/"
-    >如何学习前端</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/03/20/interview/" class="article-date">
-  <time datetime="2021-03-19T16:00:00.000Z" itemprop="datePublished">2021-03-20</time>
-</a>    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
     </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="如何学习前端"><a href="#如何学习前端" class="headerlink" title="如何学习前端`"></a>如何学习前端`</h3><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="如何学习前端-1"><a href="#如何学习前端-1" class="headerlink" title="如何学习前端"></a>如何学习前端</h3><p>如何学习前端</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>成为一个优秀的前端工程,在对于框架熟悉的情况下,基础知识是不可缺少的,是程序猿的自我修养就是基础知识,扎实的基础能让你更高效的学习新技术</p>
-<h3 id="前端知识体系"><a href="#前端知识体系" class="headerlink" title="前端知识体系"></a>前端知识体系</h3><h5>什么是知识体系</h5>
-
-<ol>
-<li>结构化的知识范围</li>
-<li>涵盖所有知识点;结构化,有组织,易扩展</li>
-</ol>
-<h5>从哪些方面去梳理</h5>
-
-<ol>
-<li>W3C 标准</li>
-<li>ECMA 262 标准</li>
-<li>开发环境</li>
-<li>运行环境</li>
-</ol>
-<h5>知识体系目录</h5>
-
-<ol>
-<li>CSS 基础知识</li>
-<li>JS 基础语法</li>
-<li>JS-Web-API</li>
-<li>开发环境</li>
-<li>运行环境</li>
-<li>HTTP 协议</li>
-</ol>
-<h5>高效学习三部曲</h5>
-
-<ol start="6">
-<li>找准知识体系</li>
-<li>刻意训练</li>
-<li>及时反馈</li>
-</ol>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
     
     <footer class="article-footer">
        
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-hexo"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/03/15/hexo/"
-    >使用hexo搭建博客</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/03/15/hexo/" class="article-date">
-  <time datetime="2021-03-14T16:00:00.000Z" itemprop="datePublished">2021-03-15</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="学习如何使用-Hexo-搭建属于自己的博客-https-hexo-io-zh-cn"><a href="#学习如何使用-Hexo-搭建属于自己的博客-https-hexo-io-zh-cn" class="headerlink" title="学习如何使用 Hexo 搭建属于自己的博客(https://hexo.io/zh-cn/)!"></a>学习如何使用 Hexo 搭建属于自己的博客(<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a>)!</h3><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="什么是-Hexo"><a href="#什么是-Hexo" class="headerlink" title="什么是 Hexo?"></a>什么是 Hexo?</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>需要在本机安装 Git,node 基本环境</p>
-<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>使用命令初始化 hexo</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init name</span><br></pre></td></tr></table></figure>
-
-<p>安装依赖包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-
-<p>新建完成后，指定文件夹目录下有：</p>
-<ol>
-<li>node_modules: 依赖包</li>
-<li>public：存放生成的页面</li>
-<li>scaffolds：生成文章的一些模板</li>
-<li>source：用来存放你的文章</li>
-<li>themes：主题</li>
-<li>** _config.yml: 博客的配置文件**</li>
-</ol>
-<h3 id="本地查看页面"><a href="#本地查看页面" class="headerlink" title="本地查看页面"></a>本地查看页面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>打开 hexo 的服务，在浏览器输入 localhost:4000 就可以看到你生成的博客了。<br>是不是很惊喜!!!</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-  </article>
-  
-
-  
-</section>
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
 </div>
 
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/04/02/this/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/05/03/VueReact/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            React 和 Vue的区别
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/03/20/interview/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">如何学习前端</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+</article>
+
+</section>
       <footer class="footer">
   <div class="outer">
     <ul>
@@ -547,6 +342,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
