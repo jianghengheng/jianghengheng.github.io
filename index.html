@@ -197,6 +197,66 @@
 
     
     <article
+  id="post-nuxtssr"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/05/02/nuxtssr/"
+    >学习 Nuxt  服务端渲染</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/05/02/nuxtssr/" class="article-date">
+  <time datetime="2021-05-01T16:00:00.000Z" itemprop="datePublished">2021-05-02</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h3><p>服务端渲染（Server Side Render）并不是一个新的概念，在单页应用（SPA）还没有流行起来的时候，页面就是通过服务端渲染好，并传递给浏览器的。当用户需要访问新的页面时，需要再次请求服务器，返回新的页面。<br>为了优化体验，开发者们开始选择采用 JavaScript 在前端完成渲染过程，用前后端分离的手段，使后端更专注于数据，而前端注重于处理展示，通过设计良好的 API 以及 Ajax 技术完成前后端的交互，jQuery、React.js、Vue.js、Angular.js 等框架应运而生。<br>这些框架给开发者带来了巨大的便利，但是对于一些论坛、资讯网站、或是企业的官方网站来说，他们对搜索引擎优化（SEO）有强烈的要求，而前端渲染技术是无法满足他们的需求的。如果无法通过搜索引擎的搜索输出自身的内容，那么网站的价值就会大大受影响，要解决这类问题，还是要靠服务端渲染。<br>本文会介绍 Vue.js 的服务端渲染解决方案 Nuxt.js。Vue.js 推出后，其数据驱动和组件化思想，以及简洁易上手的特性给开发者带来了巨大的便利，Vue.js 官方提供的 vue-server-renderer 可以用来进行服务端渲染的工作，但是需要增加额外的工作量，开发体验仍有待提高，而 Nuxt.js 推出后，这个问题被很好的解决了。</p>
+<h3 id="1-Nuxt-js"><a href="#1-Nuxt-js" class="headerlink" title="1.Nuxt.js"></a>1.Nuxt.js</h3><p>Nuxt.js 是一个基于 Vue.js 的通用应用框架，Nuxt.js 预设了利用 Vue.js 开发服务端渲染的应用所需要的各种配置，并且可以一键生成静态站点。同时，Nuxt.js 的热加载机制可以使开发者非常便捷的进行网站的开发。</p>
+<h3 id="2-项目目录"><a href="#2-项目目录" class="headerlink" title="2.项目目录"></a>2.项目目录</h3><p>.nuxt/：用于存放 Nuxt.js 的核心库文件。例如，你可以在这个目录下找到 server.js 文件，描述了 Nuxt.js 进行服务端渲染的逻辑（参见下一段 “Nuxt.js 的渲染流程”），router.js 文件包含一张自动生成的路由表。</p>
+<p>assets/：用于存放静态资源，该目录下的资源使用 Webpack 构建。</p>
+<p>components/：存放项目中的各种组件。注意，只有在这个目录下的文件才能被称为组件。</p>
+<p>layouts/：创建自定义的页面布局，可以在这个目录下创建全局页面的统一布局，或是错误页布局。如果需要在布局中渲染 pages 目录中的路由页面，需要在布局文件中加上 <nuxt /> 标签。</p>
+<p>middleware/：放置自定义的中间件，会在加载组件之前调用。</p>
+<p>pages/：在这个目录下，Nuxt.js 会根据目录的结构生成 vue-router 路由，详见下文。</p>
+<p>plugins/：可以在这个目录中放置自定义插件，在根 Vue 对象实例化之前运行。例如，可以将项目中的埋点逻辑封装成一个插件，放置在这个目录中，并在 nuxt.config.js 中加载。</p>
+<p>static/：不使用 Webpack 构建的静态资源，会映射到根路径下，如 robots.txt</p>
+<p>store/：存放 Vuex 状态树。</p>
+<h3 id="3-生命周期"><a href="#3-生命周期" class="headerlink" title="3.生命周期"></a>3.生命周期</h3><img src='https://user-gold-cdn.xitu.io/2017/10/24/ac3251e71b504c179e140665c3139004?imageView2/0/w/1280/h/960/format/webp/ignore-error/1'>
+
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-this"
   class="article article-type-post"
   itemscope
