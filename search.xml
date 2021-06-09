@@ -29,37 +29,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>React 和 Vue的区别</title>
-    <url>/2021/05/03/VueReact/</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="总结-React-和-Vue-的区别"><a href="#总结-React-和-Vue-的区别" class="headerlink" title="总结 React 和 Vue 的区别"></a>总结 React 和 Vue 的区别</h3><p>从各个方面的不同点，原理，为什么这样实现来描述的话怎么也说不完 每个人的理解不同</p>
-<h3 id="1-设计思想"><a href="#1-设计思想" class="headerlink" title="1.设计思想"></a>1.设计思想</h3><p>vue 的官网中说它是一款渐进式框架，采用自底向上增量开发的设计。<br>react 主张函数式编程，所以推崇纯组件，数据不可变，单向数据流，当然需要双向的地方也可以手动实现，<br>比如借助 onChange 和 setState 来实现一个双向的数据流。</p>
-<p>react 一个库 vue 是一个框架 vue 中帮你实现了许多指令等函数 ,react 是开放式的需要什么自己动手写就行</p>
-<h3 id="2-编写语法"><a href="#2-编写语法" class="headerlink" title="2.编写语法"></a>2.编写语法</h3><p>Vue 推荐的做法是 webpack+vue-loader 的单文件组件格式，vue 保留了 html、css、js 分离的写法<br>React的开发者可能知道，react是没有模板的，直接就是一个渲染函数，它中间返回的就是一个虚拟DOM树，<br>React推荐的做法是  JSX + inline style, 也就是把HTML和CSS全都写进JavaScript了,即’all in  js’。</p>
-<h3 id="3-构建工具"><a href="#3-构建工具" class="headerlink" title="3.构建工具"></a>3.构建工具</h3><p>vue 提供了 CLI 脚手架，可以帮助你非常容易地构建项目。<br>React 在这方面也提供了 create-react-app，但是现在还存在一些局限性，不能配置等等</p>
-<h3 id="4-数据绑定"><a href="#4-数据绑定" class="headerlink" title="4.数据绑定"></a>4.数据绑定</h3><p>vue 是实现了双向数据绑定的 mvvm 框架，当视图改变更新模型层，当模型层改变更新视图层。<br>在 vue 中，使用了双向绑定技术，就是 View 的变化能实时让 Model 发生变化，而 Model 的变化也能实时更新到 View。<br>(这里我们可以继续深入讲解一下双向数据绑定的原理，我之前的文章手写 Vue 源码可参考)<br>react是单向数据流，react中属性是不允许更改的，状态是允许更改的。<br>react中组件不允许通过this.state这种方式直接更改组件的状态。自身设置的状态，可以通过setState来进行更改。<br>(注意：React中setState是异步的，导致获取dom可能拿的还是之前的内容，<br>所以我们需要在setState第二个参数（回调函数）中获取更新后的新的内容。)<br>【这里如果你了解深入的话可以尝试描述一下React中setState的异步操作是怎么实现的，Vue中的更新是通过微任务等】</p>
-<h3 id="5-diff-算法"><a href="#5-diff-算法" class="headerlink" title="5.diff 算法"></a>5.diff 算法</h3><p>vue 中 diff 算法实现流程： 1.在内存中构建虚拟 dom 树 2.将内存中虚拟 dom 树渲染成真实 dom 结构 3.数据改变的时候，将之前的虚拟 dom 树结合新的数据生成新的虚拟 dom 树 4.将此次生成好的虚拟 dom 树和上一次的虚拟 dom 树进行一次比对(diff 算法进行比对)，来更新只需要被替换的 DOM，<br>而不是全部重绘。在 Diff 算法中，只平层的比较前后两棵 DOM 树的节点，没有进行深度的遍历。 5.会将对比出来的差异进行重新渲染<br>react中diff算法实现流程:<br>DOM结构发生改变—–直接卸载并重新create<br>DOM结构一样—–不会卸载,但是会update变化的内容<br>所有同一层级的子节点.他们都可以通过key来区分—–同时遵循1.2两点<br>(其实这个key的存在与否只会影响diff算法的复杂度,换言之,你不加key的情况下,<br>diff算法就会以暴力的方式去根据一二的策略更新,但是你加了key,diff算法会引入一些另外的操作)</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>学习 Nuxt  服务端渲染</title>
-    <url>/2021/05/02/nuxtssr/</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h3><p>服务端渲染（Server Side Render）并不是一个新的概念，在单页应用（SPA）还没有流行起来的时候，页面就是通过服务端渲染好，并传递给浏览器的。当用户需要访问新的页面时，需要再次请求服务器，返回新的页面。<br>为了优化体验，开发者们开始选择采用 JavaScript 在前端完成渲染过程，用前后端分离的手段，使后端更专注于数据，而前端注重于处理展示，通过设计良好的 API 以及 Ajax 技术完成前后端的交互，jQuery、React.js、Vue.js、Angular.js 等框架应运而生。<br>这些框架给开发者带来了巨大的便利，但是对于一些论坛、资讯网站、或是企业的官方网站来说，他们对搜索引擎优化（SEO）有强烈的要求，而前端渲染技术是无法满足他们的需求的。如果无法通过搜索引擎的搜索输出自身的内容，那么网站的价值就会大大受影响，要解决这类问题，还是要靠服务端渲染。<br>本文会介绍 Vue.js 的服务端渲染解决方案 Nuxt.js。Vue.js 推出后，其数据驱动和组件化思想，以及简洁易上手的特性给开发者带来了巨大的便利，Vue.js 官方提供的 vue-server-renderer 可以用来进行服务端渲染的工作，但是需要增加额外的工作量，开发体验仍有待提高，而 Nuxt.js 推出后，这个问题被很好的解决了。</p>
-<h3 id="1-Nuxt-js"><a href="#1-Nuxt-js" class="headerlink" title="1.Nuxt.js"></a>1.Nuxt.js</h3><p>Nuxt.js 是一个基于 Vue.js 的通用应用框架，Nuxt.js 预设了利用 Vue.js 开发服务端渲染的应用所需要的各种配置，并且可以一键生成静态站点。同时，Nuxt.js 的热加载机制可以使开发者非常便捷的进行网站的开发。</p>
-<h3 id="2-项目目录"><a href="#2-项目目录" class="headerlink" title="2.项目目录"></a>2.项目目录</h3><p>.nuxt/：用于存放 Nuxt.js 的核心库文件。例如，你可以在这个目录下找到 server.js 文件，描述了 Nuxt.js 进行服务端渲染的逻辑（参见下一段 “Nuxt.js 的渲染流程”），router.js 文件包含一张自动生成的路由表。</p>
-<p>assets/：用于存放静态资源，该目录下的资源使用 Webpack 构建。</p>
-<p>components/：存放项目中的各种组件。注意，只有在这个目录下的文件才能被称为组件。</p>
-<p>layouts/：创建自定义的页面布局，可以在这个目录下创建全局页面的统一布局，或是错误页布局。如果需要在布局中渲染 pages 目录中的路由页面，需要在布局文件中加上 <nuxt /> 标签。</p>
-<p>middleware/：放置自定义的中间件，会在加载组件之前调用。</p>
-<p>pages/：在这个目录下，Nuxt.js 会根据目录的结构生成 vue-router 路由，详见下文。</p>
-<p>plugins/：可以在这个目录中放置自定义插件，在根 Vue 对象实例化之前运行。例如，可以将项目中的埋点逻辑封装成一个插件，放置在这个目录中，并在 nuxt.config.js 中加载。</p>
-<p>static/：不使用 Webpack 构建的静态资源，会映射到根路径下，如 robots.txt</p>
-<p>store/：存放 Vuex 状态树。</p>
-<h3 id="3-生命周期"><a href="#3-生命周期" class="headerlink" title="3.生命周期"></a>3.生命周期</h3><img src='https://user-gold-cdn.xitu.io/2017/10/24/ac3251e71b504c179e140665c3139004?imageView2/0/w/1280/h/960/format/webp/ignore-error/1'>
-
-
-]]></content>
-  </entry>
-  <entry>
     <title>如何学习前端</title>
     <url>/2021/03/20/interview/</url>
     <content><![CDATA[<h3 id="如何学习前端"><a href="#如何学习前端" class="headerlink" title="如何学习前端`"></a>如何学习前端`</h3><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="如何学习前端-1"><a href="#如何学习前端-1" class="headerlink" title="如何学习前端"></a>如何学习前端</h3><p>如何学习前端</p>
@@ -95,6 +64,37 @@
 <li>刻意训练</li>
 <li>及时反馈</li>
 </ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>React 和 Vue的区别</title>
+    <url>/2021/05/03/VueReact/</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="总结-React-和-Vue-的区别"><a href="#总结-React-和-Vue-的区别" class="headerlink" title="总结 React 和 Vue 的区别"></a>总结 React 和 Vue 的区别</h3><p>从各个方面的不同点，原理，为什么这样实现来描述的话怎么也说不完 每个人的理解不同</p>
+<h3 id="1-设计思想"><a href="#1-设计思想" class="headerlink" title="1.设计思想"></a>1.设计思想</h3><p>vue 的官网中说它是一款渐进式框架，采用自底向上增量开发的设计。<br>react 主张函数式编程，所以推崇纯组件，数据不可变，单向数据流，当然需要双向的地方也可以手动实现，<br>比如借助 onChange 和 setState 来实现一个双向的数据流。</p>
+<p>react 一个库 vue 是一个框架 vue 中帮你实现了许多指令等函数 ,react 是开放式的需要什么自己动手写就行</p>
+<h3 id="2-编写语法"><a href="#2-编写语法" class="headerlink" title="2.编写语法"></a>2.编写语法</h3><p>Vue 推荐的做法是 webpack+vue-loader 的单文件组件格式，vue 保留了 html、css、js 分离的写法<br>React的开发者可能知道，react是没有模板的，直接就是一个渲染函数，它中间返回的就是一个虚拟DOM树，<br>React推荐的做法是  JSX + inline style, 也就是把HTML和CSS全都写进JavaScript了,即’all in  js’。</p>
+<h3 id="3-构建工具"><a href="#3-构建工具" class="headerlink" title="3.构建工具"></a>3.构建工具</h3><p>vue 提供了 CLI 脚手架，可以帮助你非常容易地构建项目。<br>React 在这方面也提供了 create-react-app，但是现在还存在一些局限性，不能配置等等</p>
+<h3 id="4-数据绑定"><a href="#4-数据绑定" class="headerlink" title="4.数据绑定"></a>4.数据绑定</h3><p>vue 是实现了双向数据绑定的 mvvm 框架，当视图改变更新模型层，当模型层改变更新视图层。<br>在 vue 中，使用了双向绑定技术，就是 View 的变化能实时让 Model 发生变化，而 Model 的变化也能实时更新到 View。<br>(这里我们可以继续深入讲解一下双向数据绑定的原理，我之前的文章手写 Vue 源码可参考)<br>react是单向数据流，react中属性是不允许更改的，状态是允许更改的。<br>react中组件不允许通过this.state这种方式直接更改组件的状态。自身设置的状态，可以通过setState来进行更改。<br>(注意：React中setState是异步的，导致获取dom可能拿的还是之前的内容，<br>所以我们需要在setState第二个参数（回调函数）中获取更新后的新的内容。)<br>【这里如果你了解深入的话可以尝试描述一下React中setState的异步操作是怎么实现的，Vue中的更新是通过微任务等】</p>
+<h3 id="5-diff-算法"><a href="#5-diff-算法" class="headerlink" title="5.diff 算法"></a>5.diff 算法</h3><p>vue 中 diff 算法实现流程： 1.在内存中构建虚拟 dom 树 2.将内存中虚拟 dom 树渲染成真实 dom 结构 3.数据改变的时候，将之前的虚拟 dom 树结合新的数据生成新的虚拟 dom 树 4.将此次生成好的虚拟 dom 树和上一次的虚拟 dom 树进行一次比对(diff 算法进行比对)，来更新只需要被替换的 DOM，<br>而不是全部重绘。在 Diff 算法中，只平层的比较前后两棵 DOM 树的节点，没有进行深度的遍历。 5.会将对比出来的差异进行重新渲染<br>react中diff算法实现流程:<br>DOM结构发生改变—–直接卸载并重新create<br>DOM结构一样—–不会卸载,但是会update变化的内容<br>所有同一层级的子节点.他们都可以通过key来区分—–同时遵循1.2两点<br>(其实这个key的存在与否只会影响diff算法的复杂度,换言之,你不加key的情况下,<br>diff算法就会以暴力的方式去根据一二的策略更新,但是你加了key,diff算法会引入一些另外的操作)</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>学习 Nuxt  服务端渲染</title>
+    <url>/2021/05/02/nuxtssr/</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h3><p>服务端渲染（Server Side Render）并不是一个新的概念，在单页应用（SPA）还没有流行起来的时候，页面就是通过服务端渲染好，并传递给浏览器的。当用户需要访问新的页面时，需要再次请求服务器，返回新的页面。<br>为了优化体验，开发者们开始选择采用 JavaScript 在前端完成渲染过程，用前后端分离的手段，使后端更专注于数据，而前端注重于处理展示，通过设计良好的 API 以及 Ajax 技术完成前后端的交互，jQuery、React.js、Vue.js、Angular.js 等框架应运而生。<br>这些框架给开发者带来了巨大的便利，但是对于一些论坛、资讯网站、或是企业的官方网站来说，他们对搜索引擎优化（SEO）有强烈的要求，而前端渲染技术是无法满足他们的需求的。如果无法通过搜索引擎的搜索输出自身的内容，那么网站的价值就会大大受影响，要解决这类问题，还是要靠服务端渲染。<br>本文会介绍 Vue.js 的服务端渲染解决方案 Nuxt.js。Vue.js 推出后，其数据驱动和组件化思想，以及简洁易上手的特性给开发者带来了巨大的便利，Vue.js 官方提供的 vue-server-renderer 可以用来进行服务端渲染的工作，但是需要增加额外的工作量，开发体验仍有待提高，而 Nuxt.js 推出后，这个问题被很好的解决了。</p>
+<h3 id="1-Nuxt-js"><a href="#1-Nuxt-js" class="headerlink" title="1.Nuxt.js"></a>1.Nuxt.js</h3><p>Nuxt.js 是一个基于 Vue.js 的通用应用框架，Nuxt.js 预设了利用 Vue.js 开发服务端渲染的应用所需要的各种配置，并且可以一键生成静态站点。同时，Nuxt.js 的热加载机制可以使开发者非常便捷的进行网站的开发。</p>
+<h3 id="2-项目目录"><a href="#2-项目目录" class="headerlink" title="2.项目目录"></a>2.项目目录</h3><p>.nuxt/：用于存放 Nuxt.js 的核心库文件。例如，你可以在这个目录下找到 server.js 文件，描述了 Nuxt.js 进行服务端渲染的逻辑（参见下一段 “Nuxt.js 的渲染流程”），router.js 文件包含一张自动生成的路由表。</p>
+<p>assets/：用于存放静态资源，该目录下的资源使用 Webpack 构建。</p>
+<p>components/：存放项目中的各种组件。注意，只有在这个目录下的文件才能被称为组件。</p>
+<p>layouts/：创建自定义的页面布局，可以在这个目录下创建全局页面的统一布局，或是错误页布局。如果需要在布局中渲染 pages 目录中的路由页面，需要在布局文件中加上 <nuxt /> 标签。</p>
+<p>middleware/：放置自定义的中间件，会在加载组件之前调用。</p>
+<p>pages/：在这个目录下，Nuxt.js 会根据目录的结构生成 vue-router 路由，详见下文。</p>
+<p>plugins/：可以在这个目录中放置自定义插件，在根 Vue 对象实例化之前运行。例如，可以将项目中的埋点逻辑封装成一个插件，放置在这个目录中，并在 nuxt.config.js 中加载。</p>
+<p>static/：不使用 Webpack 构建的静态资源，会映射到根路径下，如 robots.txt</p>
+<p>store/：存放 Vuex 状态树。</p>
+<h3 id="3-生命周期"><a href="#3-生命周期" class="headerlink" title="3.生命周期"></a>3.生命周期</h3><img src='https://user-gold-cdn.xitu.io/2017/10/24/ac3251e71b504c179e140665c3139004?imageView2/0/w/1280/h/960/format/webp/ignore-error/1'>
+
+
 ]]></content>
   </entry>
   <entry>
