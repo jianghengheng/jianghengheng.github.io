@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>React 和 Vue的区别</title>
+    <url>/2021/05/03/VueReact/</url>
+    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="总结-React-和-Vue-的区别"><a href="#总结-React-和-Vue-的区别" class="headerlink" title="总结 React 和 Vue 的区别"></a>总结 React 和 Vue 的区别</h3><p>从各个方面的不同点，原理，为什么这样实现来描述的话怎么也说不完 每个人的理解不同</p>
+<h3 id="1-设计思想"><a href="#1-设计思想" class="headerlink" title="1.设计思想"></a>1.设计思想</h3><p>vue 的官网中说它是一款渐进式框架，采用自底向上增量开发的设计。<br>react 主张函数式编程，所以推崇纯组件，数据不可变，单向数据流，当然需要双向的地方也可以手动实现，<br>比如借助 onChange 和 setState 来实现一个双向的数据流。</p>
+<p>react 一个库 vue 是一个框架 vue 中帮你实现了许多指令等函数 ,react 是开放式的需要什么自己动手写就行</p>
+<h3 id="2-编写语法"><a href="#2-编写语法" class="headerlink" title="2.编写语法"></a>2.编写语法</h3><p>Vue 推荐的做法是 webpack+vue-loader 的单文件组件格式，vue 保留了 html、css、js 分离的写法<br>React的开发者可能知道，react是没有模板的，直接就是一个渲染函数，它中间返回的就是一个虚拟DOM树，<br>React推荐的做法是  JSX + inline style, 也就是把HTML和CSS全都写进JavaScript了,即’all in  js’。</p>
+<h3 id="3-构建工具"><a href="#3-构建工具" class="headerlink" title="3.构建工具"></a>3.构建工具</h3><p>vue 提供了 CLI 脚手架，可以帮助你非常容易地构建项目。<br>React 在这方面也提供了 create-react-app，但是现在还存在一些局限性，不能配置等等</p>
+<h3 id="4-数据绑定"><a href="#4-数据绑定" class="headerlink" title="4.数据绑定"></a>4.数据绑定</h3><p>vue 是实现了双向数据绑定的 mvvm 框架，当视图改变更新模型层，当模型层改变更新视图层。<br>在 vue 中，使用了双向绑定技术，就是 View 的变化能实时让 Model 发生变化，而 Model 的变化也能实时更新到 View。<br>(这里我们可以继续深入讲解一下双向数据绑定的原理，我之前的文章手写 Vue 源码可参考)<br>react是单向数据流，react中属性是不允许更改的，状态是允许更改的。<br>react中组件不允许通过this.state这种方式直接更改组件的状态。自身设置的状态，可以通过setState来进行更改。<br>(注意：React中setState是异步的，导致获取dom可能拿的还是之前的内容，<br>所以我们需要在setState第二个参数（回调函数）中获取更新后的新的内容。)<br>【这里如果你了解深入的话可以尝试描述一下React中setState的异步操作是怎么实现的，Vue中的更新是通过微任务等】</p>
+<h3 id="5-diff-算法"><a href="#5-diff-算法" class="headerlink" title="5.diff 算法"></a>5.diff 算法</h3><p>vue 中 diff 算法实现流程： 1.在内存中构建虚拟 dom 树 2.将内存中虚拟 dom 树渲染成真实 dom 结构 3.数据改变的时候，将之前的虚拟 dom 树结合新的数据生成新的虚拟 dom 树 4.将此次生成好的虚拟 dom 树和上一次的虚拟 dom 树进行一次比对(diff 算法进行比对)，来更新只需要被替换的 DOM，<br>而不是全部重绘。在 Diff 算法中，只平层的比较前后两棵 DOM 树的节点，没有进行深度的遍历。 5.会将对比出来的差异进行重新渲染<br>react中diff算法实现流程:<br>DOM结构发生改变—–直接卸载并重新create<br>DOM结构一样—–不会卸载,但是会update变化的内容<br>所有同一层级的子节点.他们都可以通过key来区分—–同时遵循1.2两点<br>(其实这个key的存在与否只会影响diff算法的复杂度,换言之,你不加key的情况下,<br>diff算法就会以暴力的方式去根据一二的策略更新,但是你加了key,diff算法会引入一些另外的操作)</p>
+]]></content>
+  </entry>
+  <entry>
     <title>使用hexo搭建博客</title>
     <url>/2021/03/15/hexo/</url>
     <content><![CDATA[<h3 id="学习如何使用-Hexo-搭建属于自己的博客-https-hexo-io-zh-cn"><a href="#学习如何使用-Hexo-搭建属于自己的博客-https-hexo-io-zh-cn" class="headerlink" title="学习如何使用 Hexo 搭建属于自己的博客(https://hexo.io/zh-cn/)!"></a>学习如何使用 Hexo 搭建属于自己的博客(<a href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a>)!</h3><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="什么是-Hexo"><a href="#什么是-Hexo" class="headerlink" title="什么是 Hexo?"></a>什么是 Hexo?</h3><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
@@ -26,56 +38,6 @@
 <h3 id="本地查看页面"><a href="#本地查看页面" class="headerlink" title="本地查看页面"></a>本地查看页面</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
 <p>打开 hexo 的服务，在浏览器输入 localhost:4000 就可以看到你生成的博客了。<br>是不是很惊喜!!!</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>如何学习前端</title>
-    <url>/2021/03/20/interview/</url>
-    <content><![CDATA[<h3 id="如何学习前端"><a href="#如何学习前端" class="headerlink" title="如何学习前端`"></a>如何学习前端`</h3><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="如何学习前端-1"><a href="#如何学习前端-1" class="headerlink" title="如何学习前端"></a>如何学习前端</h3><p>如何学习前端</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>成为一个优秀的前端工程,在对于框架熟悉的情况下,基础知识是不可缺少的,是程序猿的自我修养就是基础知识,扎实的基础能让你更高效的学习新技术</p>
-<h3 id="前端知识体系"><a href="#前端知识体系" class="headerlink" title="前端知识体系"></a>前端知识体系</h3><h5>什么是知识体系</h5>
-
-<ol>
-<li>结构化的知识范围</li>
-<li>涵盖所有知识点;结构化,有组织,易扩展</li>
-</ol>
-<h5>从哪些方面去梳理</h5>
-
-<ol>
-<li>W3C 标准</li>
-<li>ECMA 262 标准</li>
-<li>开发环境</li>
-<li>运行环境</li>
-</ol>
-<h5>知识体系目录</h5>
-
-<ol>
-<li>CSS 基础知识</li>
-<li>JS 基础语法</li>
-<li>JS-Web-API</li>
-<li>开发环境</li>
-<li>运行环境</li>
-<li>HTTP 协议</li>
-</ol>
-<h5>高效学习三部曲</h5>
-
-<ol start="6">
-<li>找准知识体系</li>
-<li>刻意训练</li>
-<li>及时反馈</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>React 和 Vue的区别</title>
-    <url>/2021/05/03/VueReact/</url>
-    <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="总结-React-和-Vue-的区别"><a href="#总结-React-和-Vue-的区别" class="headerlink" title="总结 React 和 Vue 的区别"></a>总结 React 和 Vue 的区别</h3><p>从各个方面的不同点，原理，为什么这样实现来描述的话怎么也说不完 每个人的理解不同</p>
-<h3 id="1-设计思想"><a href="#1-设计思想" class="headerlink" title="1.设计思想"></a>1.设计思想</h3><p>vue 的官网中说它是一款渐进式框架，采用自底向上增量开发的设计。<br>react 主张函数式编程，所以推崇纯组件，数据不可变，单向数据流，当然需要双向的地方也可以手动实现，<br>比如借助 onChange 和 setState 来实现一个双向的数据流。</p>
-<p>react 一个库 vue 是一个框架 vue 中帮你实现了许多指令等函数 ,react 是开放式的需要什么自己动手写就行</p>
-<h3 id="2-编写语法"><a href="#2-编写语法" class="headerlink" title="2.编写语法"></a>2.编写语法</h3><p>Vue 推荐的做法是 webpack+vue-loader 的单文件组件格式，vue 保留了 html、css、js 分离的写法<br>React的开发者可能知道，react是没有模板的，直接就是一个渲染函数，它中间返回的就是一个虚拟DOM树，<br>React推荐的做法是  JSX + inline style, 也就是把HTML和CSS全都写进JavaScript了,即’all in  js’。</p>
-<h3 id="3-构建工具"><a href="#3-构建工具" class="headerlink" title="3.构建工具"></a>3.构建工具</h3><p>vue 提供了 CLI 脚手架，可以帮助你非常容易地构建项目。<br>React 在这方面也提供了 create-react-app，但是现在还存在一些局限性，不能配置等等</p>
-<h3 id="4-数据绑定"><a href="#4-数据绑定" class="headerlink" title="4.数据绑定"></a>4.数据绑定</h3><p>vue 是实现了双向数据绑定的 mvvm 框架，当视图改变更新模型层，当模型层改变更新视图层。<br>在 vue 中，使用了双向绑定技术，就是 View 的变化能实时让 Model 发生变化，而 Model 的变化也能实时更新到 View。<br>(这里我们可以继续深入讲解一下双向数据绑定的原理，我之前的文章手写 Vue 源码可参考)<br>react是单向数据流，react中属性是不允许更改的，状态是允许更改的。<br>react中组件不允许通过this.state这种方式直接更改组件的状态。自身设置的状态，可以通过setState来进行更改。<br>(注意：React中setState是异步的，导致获取dom可能拿的还是之前的内容，<br>所以我们需要在setState第二个参数（回调函数）中获取更新后的新的内容。)<br>【这里如果你了解深入的话可以尝试描述一下React中setState的异步操作是怎么实现的，Vue中的更新是通过微任务等】</p>
-<h3 id="5-diff-算法"><a href="#5-diff-算法" class="headerlink" title="5.diff 算法"></a>5.diff 算法</h3><p>vue 中 diff 算法实现流程： 1.在内存中构建虚拟 dom 树 2.将内存中虚拟 dom 树渲染成真实 dom 结构 3.数据改变的时候，将之前的虚拟 dom 树结合新的数据生成新的虚拟 dom 树 4.将此次生成好的虚拟 dom 树和上一次的虚拟 dom 树进行一次比对(diff 算法进行比对)，来更新只需要被替换的 DOM，<br>而不是全部重绘。在 Diff 算法中，只平层的比较前后两棵 DOM 树的节点，没有进行深度的遍历。 5.会将对比出来的差异进行重新渲染<br>react中diff算法实现流程:<br>DOM结构发生改变—–直接卸载并重新create<br>DOM结构一样—–不会卸载,但是会update变化的内容<br>所有同一层级的子节点.他们都可以通过key来区分—–同时遵循1.2两点<br>(其实这个key的存在与否只会影响diff算法的复杂度,换言之,你不加key的情况下,<br>diff算法就会以暴力的方式去根据一二的策略更新,但是你加了key,diff算法会引入一些另外的操作)</p>
 ]]></content>
   </entry>
   <entry>
@@ -117,6 +79,44 @@
 <h3 id="4-es6-的箭头函数"><a href="#4-es6-的箭头函数" class="headerlink" title="4.es6 的箭头函数"></a>4.es6 的箭头函数</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> window.name = <span class="string">&#x27;win&#x27;</span>;</span><br><span class="line">const obj1 = &#123;</span><br><span class="line">    name: <span class="string">&#x27;joy&#x27;</span>,</span><br><span class="line">    getName: () =&gt; &#123;</span><br><span class="line">        console.log(this); //window 调用前this是什么函数里面的this就是什么</span><br><span class="line">        console.log(this.name); //win</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj1.getName();</span><br></pre></td></tr></table></figure>
 
 <p>还有一些特殊情况暂时没有总结</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>如何学习前端</title>
+    <url>/2021/03/20/interview/</url>
+    <content><![CDATA[<h3 id="如何学习前端"><a href="#如何学习前端" class="headerlink" title="如何学习前端`"></a>如何学习前端`</h3><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="如何学习前端-1"><a href="#如何学习前端-1" class="headerlink" title="如何学习前端"></a>如何学习前端</h3><p>如何学习前端</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>成为一个优秀的前端工程,在对于框架熟悉的情况下,基础知识是不可缺少的,是程序猿的自我修养就是基础知识,扎实的基础能让你更高效的学习新技术</p>
+<h3 id="前端知识体系"><a href="#前端知识体系" class="headerlink" title="前端知识体系"></a>前端知识体系</h3><h5>什么是知识体系</h5>
+
+<ol>
+<li>结构化的知识范围</li>
+<li>涵盖所有知识点;结构化,有组织,易扩展</li>
+</ol>
+<h5>从哪些方面去梳理</h5>
+
+<ol>
+<li>W3C 标准</li>
+<li>ECMA 262 标准</li>
+<li>开发环境</li>
+<li>运行环境</li>
+</ol>
+<h5>知识体系目录</h5>
+
+<ol>
+<li>CSS 基础知识</li>
+<li>JS 基础语法</li>
+<li>JS-Web-API</li>
+<li>开发环境</li>
+<li>运行环境</li>
+<li>HTTP 协议</li>
+</ol>
+<h5>高效学习三部曲</h5>
+
+<ol start="6">
+<li>找准知识体系</li>
+<li>刻意训练</li>
+<li>及时反馈</li>
+</ol>
 ]]></content>
   </entry>
 </search>
